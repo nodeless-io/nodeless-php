@@ -61,8 +61,8 @@ class StoreInvoice extends AbstractClient
     }
 
     public function getInvoiceStatus(
-      string $storeId,
-      string $invoiceId
+        string $storeId,
+        string $invoiceId
     ): string {
         $url = $this->getApiUrl() . 'store/' . urlencode($storeId) . '/invoice/' . urlencode($invoiceId) . '/status';
         $headers = $this->getRequestHeaders();
