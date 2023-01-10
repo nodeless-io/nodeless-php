@@ -74,6 +74,21 @@ class StoreInvoice extends AbstractResult
         return $this->getData()['qrCodes'];
     }
 
+    public function getQrCodeUnified(): string
+    {
+        return $this->getData()['qrCodes']['unified'];
+    }
+
+    public function getQrCodeOnchain(): string
+    {
+        return $this->getData()['qrCodes']['onchain'];
+    }
+
+    public function getQrCodeLightning(): string
+    {
+        return $this->getData()['qrCodes']['lightning'];
+    }
+
     public function isNew(): bool
     {
         return $this->getData()['status'] === self::STATUS_NEW;
