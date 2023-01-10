@@ -1,12 +1,11 @@
 {
-    "name": "nodelessio/nodeless-php",
-    "description": "Nodeless.io API PHP client library.",
+    "name": "nodeless-io/nodeless-php",
+    "description": "Nodeless.io PHP client library.",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
-            "name": "Andreas Tasch",
-            "email": "andy.tasch@gmail.com"
+            "name": "nodless.io development team"
         }
     ],
     "minimum-stability": "stable",
