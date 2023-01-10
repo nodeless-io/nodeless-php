@@ -3,7 +3,7 @@
 ## How to use with composer
 
 ```
-composer require nodelessio/nodeless-php
+composer require nodeless-io/nodeless-php
 ```
 If you use some framework or other project you likely are ready to go. If you start from scratch make sure to include Composer autoloader.
 ```
