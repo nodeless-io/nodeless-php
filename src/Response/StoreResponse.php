@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace NodelessIO\Result;
+namespace NodelessIO\Response;
 
-class Store extends AbstractResult
+class StoreResponse extends AbstractResponse
 {
     public function getId(): string
     {

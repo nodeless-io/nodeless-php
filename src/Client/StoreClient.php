@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace NodelessIO\Client;
 
-use NodelessIO\Result\Store as ResultStore;
+use NodelessIO\Response\StoreResponse;
 
-class Store extends AbstractClient
+class StoreClient extends AbstractClient
 {
-    public function getStore($storeId): ResultStore
+    public function getStore($storeId): StoreResponse
     {
         $url = $this->getApiUrl() . 'store/' . urlencode($storeId);
         $headers = $this->getRequestHeaders();
@@ -16,14 +16,14 @@ class Store extends AbstractClient
         $response = $this->getHttpClient()->request($method, $url, $headers);
 
         if ($response->getStatus() === 200) {
-            return new ResultStore(json_decode($response->getBody(), true, 512, JSON_THROW_ON_ERROR));
+            return new StoreResponse(json_decode($response->getBody(), true, 512, JSON_THROW_ON_ERROR));
         } else {
             throw $this->getExceptionByStatusCode($method, $url, $response);
         }
     }
 
     /**
-     * @return \NodelessIO\Result\Store[]
+     * @return \NodelessIO\Response\StoreResponse[]
      */
     public function allStores(): array
     {
@@ -37,7 +37,7 @@ class Store extends AbstractClient
             $r = [];
             $result = json_decode($response->getBody(), true);
             foreach ($result['data'] as $item) {
-                $item = new ResultStore(['data' => $item]);
+                $item = new StoreResponse(['data' => $item]);
                 $r[] = $item;
             }
             return $r;
