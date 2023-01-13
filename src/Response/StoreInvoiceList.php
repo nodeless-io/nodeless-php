@@ -2,30 +2,30 @@
 
 declare(strict_types=1);
 
-namespace NodelessIO\Result;
+namespace NodelessIO\Response;
 
-class StoreInvoiceList extends AbstractListResult
+class StoreInvoiceList extends AbstractListResponse
 {
     /**
-     * @return \NodelessIO\Result\StoreInvoice[]
+     * @return \NodelessIO\Response\StoreInvoiceResponse[]
      */
     public function all(): array
     {
         $invoices = [];
         foreach ($this->getData() as $invoice) {
-            $invoices[] = new \NodelessIO\Result\StoreInvoice($invoice);
+            $invoices[] = new \NodelessIO\Response\StoreInvoiceResponse($invoice);
         }
         return $invoices;
     }
 
     /**
-     * @return \NodelessIO\Result\StoreInvoice[]
+     * @return \NodelessIO\Response\StoreInvoiceResponse[]
      */
     public function getInvoicesByStatus(string $status): array
     {
         $r = array_filter(
             $this->all(),
-            function (\NodelessIO\Result\StoreInvoice $invoice) use ($status) {
+            function (\NodelessIO\Response\StoreInvoiceResponse $invoice) use ($status) {
                 return $invoice->getStatus() === $status;
             }
         );

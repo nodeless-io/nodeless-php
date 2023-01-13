@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace NodelessIO\Result;
+namespace NodelessIO\Response;
 
-abstract class AbstractResult implements \ArrayAccess
+abstract class AbstractResponse implements \ArrayAccess
 {
     /** @var array */
     private $data;

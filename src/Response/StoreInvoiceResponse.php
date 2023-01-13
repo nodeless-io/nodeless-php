@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace NodelessIO\Result;
+namespace NodelessIO\Response;
 
-class StoreInvoice extends AbstractResult
+class StoreInvoiceResponse extends AbstractResponse
 {
     public const STATUS_NEW = 'new';
 
@@ -21,9 +21,14 @@ class StoreInvoice extends AbstractResult
         return $this->getData()['id'];
     }
 
-    public function getAmount(): float
+    public function getCheckoutLink()
     {
-        return $this->getData()['amount'];
+        return $this->getData()['checkoutLink'];
+    }
+
+    public function getSatsAmount(): float
+    {
+        return $this->getData()['satsAmount'];
     }
 
     public function getStatus(): string
@@ -64,9 +69,9 @@ class StoreInvoice extends AbstractResult
         return $this->getData()['lightningInvoice'];
     }
 
-    public function getStore(): Store
+    public function getStore(): StoreResponse
     {
-        return new Store(['data' => $this->getData()['store']]);
+        return new StoreResponse(['data' => $this->getData()['store']]);
     }
 
     public function getQrCodes(): array

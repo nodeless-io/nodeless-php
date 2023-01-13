@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace NodelessIO\Result;
+namespace NodelessIO\Response;
 
-abstract class AbstractListResult extends AbstractResult implements \Countable
+abstract class AbstractListResponse extends AbstractResponse implements \Countable
 {
     public function count()
     {
