@@ -26,8 +26,8 @@ class StoreInvoiceClient extends AbstractClient
             [
                 'amount' => $amount,
                 'currency' => $currency,
-                'buyer_email' => $buyerEmail,
-                'redirect_url' => $redirectUrl,
+                'buyerEmail' => $buyerEmail,
+                'redirectUrl' => $redirectUrl,
                 'metadata' => !empty($metaData) ? $metaData : null,
             ],
             JSON_THROW_ON_ERROR
