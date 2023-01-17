@@ -7,14 +7,13 @@ namespace NodelessIO\Response;
 class StoreInvoiceResponse extends AbstractResponse
 {
     public const STATUS_NEW = 'new';
-
-    public const STATUS_INVALID = 'invalid';
-
-    public const STATUS_SETTLED = 'settled';
-
+    public const STATUS_PENDING_CONFIRMATION = 'pending_confirmation';
+    public const STATUS_PAID = 'paid';
     public const STATUS_EXPIRED = 'expired';
-
-    public const STATUS_PROCESSING = 'processing';
+    public const STATUS_CANCELLED = 'cancelled';
+    public const STATUS_UNDERPAID = 'underpaid';
+    public const STATUS_OVERPAID = 'overpaid';
+    public const STATUS_IN_FLIGHT = 'in_flight';
 
     public function getId(): string
     {
@@ -99,14 +98,14 @@ class StoreInvoiceResponse extends AbstractResponse
         return $this->getData()['status'] === self::STATUS_NEW;
     }
 
-    public function isInvalid(): bool
+    public function isPendingConfirmation(): bool
     {
-        return $this->getData()['status'] === self::STATUS_INVALID;
+        return $this->getData()['status'] === self::STATUS_PENDING_CONFIRMATION;
     }
 
-    public function isSettled(): bool
+    public function isPaid(): bool
     {
-        return $this->getData()['status'] === self::STATUS_SETTLED;
+        return $this->getData()['status'] === self::STATUS_PAID;
     }
 
     public function isExpired(): bool
@@ -114,8 +113,23 @@ class StoreInvoiceResponse extends AbstractResponse
         return $this->getData()['status'] === self::STATUS_EXPIRED;
     }
 
-    public function isProcessing(): bool
+    public function isCancelled(): bool
     {
-        return $this->getData()['status'] === self::STATUS_PROCESSING;
+        return $this->getData()['status'] === self::STATUS_CANCELLED;
+    }
+
+    public function isUnderpaid(): bool
+    {
+        return $this->getData()['status'] === self::STATUS_UNDERPAID;
+    }
+
+    public function isOverpaid(): bool
+    {
+        return $this->getData()['status'] === self::STATUS_OVERPAID;
+    }
+
+    public function isInFlight(): bool
+    {
+        return $this->getData()['status'] === self::STATUS_IN_FLIGHT;
     }
 }
