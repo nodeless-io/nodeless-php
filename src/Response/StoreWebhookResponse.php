@@ -16,7 +16,7 @@ class StoreWebhookResponse extends AbstractResponse
         return $this->getData()['url'];
     }
 
-    public function getSecret(): float
+    public function getSecret(): string
     {
         return $this->getData()['secret'];
     }
