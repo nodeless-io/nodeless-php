@@ -11,7 +11,7 @@ class StoreWebhookClient extends AbstractClient
     public function allWebhooks(
         string $storeId
     ): StoreWebhookResponse {
-        $url = $this->getApiUrl() . 'store/' . urlencode($storeId) . '/webhooks';
+        $url = $this->getApiUrl() . 'store/' . urlencode($storeId) . '/webhook';
         $headers = $this->getRequestHeaders();
         $method = 'GET';
         $response = $this->getHttpClient()->request($method, $url, $headers);
@@ -27,7 +27,7 @@ class StoreWebhookClient extends AbstractClient
         string $storeId,
         string $webhookId
     ): StoreWebhookResponse {
-        $url = $this->getApiUrl() . 'store/' . urlencode($storeId) . '/webhooks/' . urlencode($webhookId);
+        $url = $this->getApiUrl() . 'store/' . urlencode($storeId) . '/webhook/' . urlencode($webhookId);
         $headers = $this->getRequestHeaders();
         $method = 'GET';
         $response = $this->getHttpClient()->request($method, $url, $headers);
@@ -48,7 +48,7 @@ class StoreWebhookClient extends AbstractClient
     ): StoreWebhookResponse {
         $apiUrl = $this->getApiUrl() . 'store/' . urlencode(
             $storeId
-        ) . '/webhooks';
+        ) . '/webhook';
         $headers = $this->getRequestHeaders();
         $method = 'POST';
 
@@ -81,7 +81,7 @@ class StoreWebhookClient extends AbstractClient
         array $events,
         string $status
     ): StoreWebhookResponse {
-        $apiUrl = $this->getApiUrl() . 'store/' . urlencode($storeId) . '/webhooks/' . urlencode($webhookId);
+        $apiUrl = $this->getApiUrl() . 'store/' . urlencode($storeId) . '/webhook/' . urlencode($webhookId);
         $headers = $this->getRequestHeaders();
         $method = 'PUT';
 
@@ -107,7 +107,7 @@ class StoreWebhookClient extends AbstractClient
         string $storeId,
         string $webhookId
     ): bool {
-        $url = $this->getApiUrl() . 'store/' . urlencode($storeId) . '/webhooks/' . urlencode($webhookId);
+        $url = $this->getApiUrl() . 'store/' . urlencode($storeId) . '/webhook/' . urlencode($webhookId);
         $headers = $this->getRequestHeaders();
         $method = 'DELETE';
         $response = $this->getHttpClient()->request($method, $url, $headers);
