@@ -6,7 +6,6 @@ namespace NodelessIO\Response;
 
 class PaywallResponse extends AbstractResponse
 {
-
     public function getId(): string
     {
         return $this->getData()['id'];

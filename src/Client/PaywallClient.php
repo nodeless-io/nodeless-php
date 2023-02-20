@@ -9,7 +9,8 @@ use NodelessIO\Response\PaywallResponse;
 
 class PaywallClient extends AbstractClient
 {
-    public function allPaywalls(): PaywallListResponse {
+    public function allPaywalls(): PaywallListResponse
+    {
         $url = $this->getApiUrl() . 'paywall/';
         $headers = $this->getRequestHeaders();
         $method = 'GET';
