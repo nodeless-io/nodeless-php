@@ -33,7 +33,7 @@ class PaywallRequestClient extends AbstractClient
 
         $response = $this->getHttpClient()->request($method, $url, $headers);
 
-        if ($response->getStatus() === 201) {
+        if ($response->getStatus() === 200) {
             return new PaywallRequestResponse(
                 json_decode($response->getBody(), true, 512, JSON_THROW_ON_ERROR)
             );
