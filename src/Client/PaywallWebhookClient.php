@@ -4,51 +4,51 @@ declare(strict_types=1);
 
 namespace NodelessIO\Client;
 
-use NodelessIO\Response\StoreWebhookListResponse;
-use NodelessIO\Response\StoreWebhookResponse;
+use NodelessIO\Response\PaywallWebhookListResponse;
+use NodelessIO\Response\PaywallWebhookResponse;
 
-class StoreWebhookClient extends AbstractClient
+class PaywallWebhookClient extends AbstractClient
 {
     public function allWebhooks(
-        string $storeId
-    ): StoreWebhookListResponse {
-        $url = $this->getApiUrl() . 'store/' . urlencode($storeId) . '/webhook';
+        string $paywallId
+    ): PaywallWebhookListResponse {
+        $url = $this->getApiUrl() . 'paywall/' . urlencode($paywallId) . '/webhook';
         $headers = $this->getRequestHeaders();
         $method = 'GET';
         $response = $this->getHttpClient()->request($method, $url, $headers);
 
         if ($response->getStatus() === 200) {
-            return new StoreWebhookListResponse(json_decode($response->getBody(), true, 512, JSON_THROW_ON_ERROR));
+            return new PaywallWebhookListResponse(json_decode($response->getBody(), true, 512, JSON_THROW_ON_ERROR));
         } else {
             throw $this->getExceptionByStatusCode($method, $url, $response);
         }
     }
 
     public function getWebhook(
-        string $storeId,
+        string $paywallId,
         string $webhookId
-    ): StoreWebhookResponse {
-        $url = $this->getApiUrl() . 'store/' . urlencode($storeId) . '/webhook/' . urlencode($webhookId);
+    ): PaywallWebhookResponse {
+        $url = $this->getApiUrl() . 'paywall/' . urlencode($paywallId) . '/webhook/' . urlencode($webhookId);
         $headers = $this->getRequestHeaders();
         $method = 'GET';
         $response = $this->getHttpClient()->request($method, $url, $headers);
 
         if ($response->getStatus() === 200) {
-            return new StoreWebhookResponse(json_decode($response->getBody(), true, 512, JSON_THROW_ON_ERROR));
+            return new PaywallWebhookResponse(json_decode($response->getBody(), true, 512, JSON_THROW_ON_ERROR));
         } else {
             throw $this->getExceptionByStatusCode($method, $url, $response);
         }
     }
     public function createWebhook(
-        string $storeId,
+        string $paywallId,
         string $type,
         string $url,
         array $events,
         string $secret,
         string $status
-    ): StoreWebhookResponse {
-        $apiUrl = $this->getApiUrl() . 'store/' . urlencode(
-            $storeId
+    ): PaywallWebhookResponse {
+        $apiUrl = $this->getApiUrl() . 'paywall/' . urlencode(
+            $paywallId
         ) . '/webhook';
         $headers = $this->getRequestHeaders();
         $method = 'POST';
@@ -67,7 +67,7 @@ class StoreWebhookClient extends AbstractClient
         $response = $this->getHttpClient()->request($method, $apiUrl, $headers, $body);
 
         if ($response->getStatus() === 201) {
-            return new StoreWebhookResponse(
+            return new PaywallWebhookResponse(
                 json_decode($response->getBody(), true, 512, JSON_THROW_ON_ERROR)
             );
         } else {
@@ -76,13 +76,13 @@ class StoreWebhookClient extends AbstractClient
     }
 
     public function updateWebhook(
-        string $storeId,
+        string $paywallId,
         string $webhookId,
         string $url,
         array $events,
         string $status
-    ): StoreWebhookResponse {
-        $apiUrl = $this->getApiUrl() . 'store/' . urlencode($storeId) . '/webhook/' . urlencode($webhookId);
+    ): PaywallWebhookResponse {
+        $apiUrl = $this->getApiUrl() . 'paywall/' . urlencode($paywallId) . '/webhook/' . urlencode($webhookId);
         $headers = $this->getRequestHeaders();
         $method = 'PUT';
 
@@ -98,17 +98,17 @@ class StoreWebhookClient extends AbstractClient
         $response = $this->getHttpClient()->request($method, $apiUrl, $headers, $body);
 
         if ($response->getStatus() === 200) {
-            return new StoreWebhookResponse(json_decode($response->getBody(), true, 512, JSON_THROW_ON_ERROR));
+            return new PaywallWebhookResponse(json_decode($response->getBody(), true, 512, JSON_THROW_ON_ERROR));
         } else {
             throw $this->getExceptionByStatusCode($method, $apiUrl, $response);
         }
     }
 
     public function deleteWebhook(
-        string $storeId,
+        string $paywallId,
         string $webhookId
     ): bool {
-        $url = $this->getApiUrl() . 'store/' . urlencode($storeId) . '/webhook/' . urlencode($webhookId);
+        $url = $this->getApiUrl() . 'paywall/' . urlencode($paywallId) . '/webhook/' . urlencode($webhookId);
         $headers = $this->getRequestHeaders();
         $method = 'DELETE';
         $response = $this->getHttpClient()->request($method, $url, $headers);
