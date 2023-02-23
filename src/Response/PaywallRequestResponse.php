@@ -11,23 +11,57 @@ class PaywallRequestResponse extends AbstractResponse
         return $this->getData()['id'];
     }
 
-    public function getType(): string
+    public function getSatsAmount(): int
     {
-        return $this->getData()['type'];
+        return $this->getData()['satsAmount'];
     }
 
-    public function getName(): string
+    public function getStatus(): string
     {
-        return $this->getData()['name'];
+        return $this->getData()['status'];
     }
 
-    public function getPrice(): int
+    public function getCreatedAt(): string
     {
-        return $this->getData()['price'];
+        return $this->getData()['createdAt'];
     }
 
-    public function getSettings(): array
+    public function getPaidAt(): string
     {
-        return $this->getData()['settings'];
+        return $this->getData()['paidAt'];
+    }
+    public function getonchainAddress(): string
+    {
+        return $this->getData()['onchainAddress'];
+    }
+
+    public function getLightningInvoice(): string
+    {
+        return $this->getData()['lightningInvoice'];
+    }
+
+    public function getPaywall(): PaywallResponse
+    {
+        return new PaywallResponse(['data' => $this->getData()['paywall']]);
+    }
+
+    public function getQrCodes(): array
+    {
+        return $this->getData()['qrCodes'];
+    }
+
+    public function getQrCodeUnified(): string
+    {
+        return $this->getData()['qrCodes']['unified'];
+    }
+
+    public function getQrCodeOnchain(): string
+    {
+        return $this->getData()['qrCodes']['onchain'];
+    }
+
+    public function getQrCodeLightning(): string
+    {
+        return $this->getData()['qrCodes']['lightning'];
     }
 }
