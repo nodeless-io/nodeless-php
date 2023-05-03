@@ -45,7 +45,7 @@ class PaywallRequestClient extends AbstractClient
     public function getPaywallRequestStatus(
         string $paywallId,
         string $paywallRequestId
-    ): PaywallResponse {
+    ): ?string {
         $url = $this->getApiUrl() . 'paywall/' . urlencode($paywallId) . '/request/' . urlencode($paywallRequestId) . '/status';
         $headers = $this->getRequestHeaders();
         $method = 'GET';
@@ -53,7 +53,8 @@ class PaywallRequestClient extends AbstractClient
         $response = $this->getHttpClient()->request($method, $url, $headers);
 
         if ($response->getStatus() === 200) {
-            return new PaywallResponse(json_decode($response->getBody(), true, 512, JSON_THROW_ON_ERROR));
+            $response =  json_decode($response->getBody(), true, 512, JSON_THROW_ON_ERROR);
+            return $response['status'] ?? null;
         } else {
             throw $this->getExceptionByStatusCode($method, $url, $response);
         }
