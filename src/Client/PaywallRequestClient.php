@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace NodelessIO\Client;
 
 use NodelessIO\Response\PaywallRequestResponse;
-use NodelessIO\Response\PaywallResponse;
 
 class PaywallRequestClient extends AbstractClient
 {
