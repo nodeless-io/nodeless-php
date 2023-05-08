@@ -2,17 +2,17 @@
 
 ## How to use with composer
 
-```
+```sh
 composer require nodeless-io/nodeless-php
 ```
 If you use some framework or other project you likely are ready to go. If you start from scratch make sure to include Composer autoloader.
-```
+```php
 require __DIR__ . '/../vendor/autoload.php';
 ```
 
 ## How to use without composer (not recommended)
 In the `src` directory we have a custom `autoload.php` which you can require and avoid using composer if needed.
-```
+```php
 // Require the autoload file.
 require __DIR__ . '/../src/autoload.php';
 
